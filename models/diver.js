@@ -6,6 +6,7 @@ const DiverSchema = new Schema({
   firstName: String,
   lastName: String,
   email: { type: String, required: true, lowercase: true },
+  gender: { type: String, enum: ['Male', 'Female'], required: true },
   grade: { type: String, enum: ['Freshman', 'Sophomore', 'Junior', 'Senior'], required: true }, 
   school: { type: Schema.Types.ObjectId, ref: 'School' },
   coaches: [{ type: Schema.Types.ObjectId, ref: 'Coach' }],
