@@ -9,7 +9,7 @@ const DiveSheetSchema = new Schema({
   is11Dive: { type: Boolean, default: false },
 }, {
   timestamps: true,
-});
+})
 
 const DiveSheet = mongoose.model('DiveSheet', DiveSheetSchema)
 
