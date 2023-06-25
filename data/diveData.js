@@ -68,7 +68,7 @@ const diveData = [
   { diveNumber: '5111', dive: 'Forward Dive, 1/2 Twists', position: 'B', dd: 1.7 },
   { diveNumber: '5111', dive: 'Forward Dive, 1/2 Twists', position: 'A', dd: 1.8 },
   { diveNumber: '5112', dive: 'Forward Dive, 1 Twists', position: 'B', dd: 1.9 },
-  { diveNumber: '5112', dive: 'Forward Dive, 1 Twists', position: 'A', dd: 2.0 }
+  { diveNumber: '5112', dive: 'Forward Dive, 1 Twists', position: 'A', dd: 2.0 },
   { diveNumber: '5121', dive: 'Forward 1 SS, 1/2 Twists', position: 'D', dd: 1.7 },
   { diveNumber: '5122', dive: 'Forward 1 SS, 1 Twists', position: 'D', dd: 1.9 },
   { diveNumber: '5124', dive: 'Forward 1 SS, 2 Twists', position: 'D', dd: 2.3 },

@@ -891,3 +891,4 @@ const schoolData = [
 ]
 
 
+export default schoolData

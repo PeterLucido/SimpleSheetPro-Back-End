@@ -7,6 +7,7 @@ const DiveSheetSchema = new Schema({
   dives: [{ type: Schema.Types.ObjectId, ref: 'Dive' }],
   diver: { type: Schema.Types.ObjectId, ref: 'Diver' },
   is11Dive: { type: Boolean, default: false },
+  owner: { type: Schema.Types.ObjectId, ref: 'Profile' },
 }, {
   timestamps: true,
 })
