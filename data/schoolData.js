@@ -891,4 +891,6 @@ const schoolData = [
 ]
 
 
-export default schoolData
+const schoolNames = schoolData.map(school => school.schoolName)
+
+export default schoolData; schoolNames

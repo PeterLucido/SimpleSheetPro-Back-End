@@ -1,12 +1,18 @@
 import mongoose from 'mongoose'
+import diveData from '../data/diveData.js'
 
 const Schema = mongoose.Schema
 
 const DiveSheetSchema = new Schema({
   title: String,
-  dives: [{ type: Schema.Types.ObjectId, ref: 'Dive' }],
-  diver: { type: Schema.Types.ObjectId, ref: 'Diver' },
-  is11Dive: { type: Boolean, default: false },
+  dives: {
+    type: [{}],
+    enum: diveData,
+  },
+  is11Dive: { 
+    type: Boolean, 
+    default: false 
+  },
   owner: { type: Schema.Types.ObjectId, ref: 'Profile' },
 }, {
   timestamps: true,
