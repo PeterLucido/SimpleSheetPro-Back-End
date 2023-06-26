@@ -9,7 +9,7 @@ const userSchema = new Schema({
   email: { type: String, required: true, lowercase: true },
   password: String,
   profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
-  isAdmin: { type: Boolean, default: false }, // New isAdmin field
+  isAdmin: { type: Boolean, default: false },
 }, {
   timestamps: true,
 })
