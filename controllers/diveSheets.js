@@ -11,8 +11,19 @@ async function index(req, res) {
   }
 }
 
+async function create(req, res) {
+  try {
+    const profile = await Profile.findById(req.params.profile)
+    req.body.owner = profile
+    const diveSheet = await DiveSheet.create(req.body)
+    res.status(201).json(diveSheet)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
 
 
 export {
   index,
+  create,
 }
