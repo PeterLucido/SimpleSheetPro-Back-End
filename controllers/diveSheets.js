@@ -31,9 +31,32 @@ async function show(req, res) {
   }
 }
 
+async function update(req, res) {
+  try {
+    const diveSheet = await DiveSheet.findById(req.params.id)
+    Object.assign(diveSheet, req.body)
+    await diveSheet.save()
+    res.status(202).json(diveSheet)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
+async function destroy(req, res) {
+  try {
+    const diveSheet = await DiveSheet.findById(req.params.id)
+    await diveSheet.remove()
+    res.status(200).json({ message: 'DiveSheet removed' })
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
 
 export {
   index,
   create,
   show,
+  update,
+  destroy,
 }
