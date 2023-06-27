@@ -34,7 +34,3 @@ const Profile = mongoose.model('Profile', profileSchema)
 
 export { Profile }
 
-
-diveSheets: [{ type: Schema.Types.ObjectId, ref: 'DiveSheet' }],
-user: { type: Schema.Types.ObjectId, ref: 'User' },
-}, {
