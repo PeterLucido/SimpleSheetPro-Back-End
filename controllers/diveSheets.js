@@ -22,8 +22,18 @@ async function create(req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const diveSheet = await DiveSheet.findById(req.params.id)
+    res.status(200).json(diveSheet)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
 
 export {
   index,
   create,
+  show,
 }
