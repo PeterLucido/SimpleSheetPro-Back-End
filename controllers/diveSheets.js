@@ -3,13 +3,19 @@ import { Profile } from '../models/profile.js'
 
 async function index(req, res) {
   try {
-    const profileId = req.params.profile
-    const diveSheets = await DiveSheet.find({owner: profileId})
-    res.status(200).json(diveSheets)
+    const profileId = req.params.profile;
+
+    if([1, 2, 3].includes(req.user.role)) {
+      const diveSheets = await DiveSheet.find({owner: profileId});
+      res.status(200).json(diveSheets);
+    } else {
+        throw new Error('Unauthorized role');
+    }
   } catch (error) {
-    res.status(400).json({ error: error.message })
+    res.status(400).json({ error: error.message });
   }
 }
+
 
 async function create(req, res) {
   try {
@@ -22,41 +28,8 @@ async function create(req, res) {
   }
 }
 
-async function show(req, res) {
-  try {
-    const diveSheet = await DiveSheet.findById(req.params.id)
-    res.status(200).json(diveSheet)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
-  }
-}
-
-async function update(req, res) {
-  try {
-    const diveSheet = await DiveSheet.findById(req.params.id)
-    Object.assign(diveSheet, req.body)
-    await diveSheet.save()
-    res.status(202).json(diveSheet)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
-  }
-}
-
-async function destroy(req, res) {
-  try {
-    const diveSheet = await DiveSheet.findById(req.params.id)
-    await diveSheet.remove()
-    res.status(200).json({ message: 'DiveSheet removed' })
-  } catch (error) {
-    res.status(400).json({ error: error.message })
-  }
-}
-
 
 export {
   index,
   create,
-  show,
-  update,
-  destroy,
 }
