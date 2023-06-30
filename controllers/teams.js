@@ -1,6 +1,6 @@
 async function getTeams(req, res) {
   try {
-    const teams = await Team.find({});
+    const teams = await Team.find({ coach: req.user._id });
     res.status(200).json(teams);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -19,13 +19,14 @@ async function getTeam(req, res) {
 }
 
 async function createTeam(req, res) {
-  const team = req.body;
-  const newTeam = new Team(team);
+  const team = req.body
+  team.coach = req.user._id
+  const newTeam = new Team(team)
   try {
-    await newTeam.save();
-    res.status(201).json(newTeam);
+    await newTeam.save()
+    res.status(201).json(newTeam)
   } catch (error) {
-    res.status(409).json({ error: error.message });
+    res.status(409).json({ error: error.message })
   }
 }
 
