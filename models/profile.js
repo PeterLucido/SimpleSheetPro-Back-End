@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import schoolNames from '../data/schoolDatajs'
+import schoolNames from '../data/schoolData.js'
 import { DiveSheet } from './diveSheet.js'
 
 const Schema = mongoose.Schema

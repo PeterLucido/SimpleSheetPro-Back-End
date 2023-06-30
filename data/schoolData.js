@@ -438,7 +438,7 @@ const schoolData = [
   { schoolName: 'Mehlville High School', county: 'St. Louis', city: 'St. Louis' },
   { schoolName: 'Mercer High School', county: 'Mercer', city: 'Mercer' },
   { schoolName: 'Metro High School', county: 'St. Louis City', city: 'St. Louis' },
-  { schoolName: 'Mexico High School', county: 'Audrain', city: 'Mexico' }
+  { schoolName: 'Mexico High School', county: 'Audrain', city: 'Mexico' },
   { schoolName: 'Miami (Amoret) High School', county: 'Bates', city: 'Amoret' },
   { schoolName: 'Miami (Amoret) Junior High School', county: 'Bates', city: 'Amoret' },
   { schoolName: 'MICDS High School', county: 'St. Louis', city: 'St. Louis' },
