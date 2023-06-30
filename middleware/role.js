@@ -3,7 +3,6 @@ function checkIfDiver(req, res, next) {
   if (!req.user) {
     return res.status(401).json({ err: 'Not Authorized' })
   }
-  // Check if user is a diver
   if (req.user.role === 1) {
     next()
   } else {
@@ -54,5 +53,5 @@ export {
   checkIfCoach, 
   checkIfManager, 
   checkIfAdmin,
-  checkIfDiver,
+  checkIfDiver
 }
