@@ -80,6 +80,53 @@ async function removeDiverFromTeam(req, res) {
   }
 }
 
+async function requestToJoinTeam(req, res) {
+  const { id } = req.params; // Team ID
+  const { diverId } = req.body; // Diver ID
+  try {
+    const team = await Team.findById(id);
+    team.pendingRequests.push(diverId);
+    await team.save();
+    res.status(200).json(team);
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+}
+
+async function approveJoinRequest(req, res) {
+  const { id } = req.params; // Team ID
+  const { diverId } = req.body; // Diver ID
+  try {
+    const team = await Team.findById(id);
+    const requestIndex = team.pendingRequests.indexOf(diverId);
+    if (requestIndex > -1) {
+      team.pendingRequests.splice(requestIndex, 1);
+      team.divers.push(diverId);
+    }
+    await team.save();
+    res.status(200).json(team);
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+}
+
+async function rejectJoinRequest(req, res) {
+  const { id } = req.params; // Team ID
+  const { diverId } = req.body; // Diver ID
+  try {
+    const team = await Team.findById(id);
+    const requestIndex = team.pendingRequests.indexOf(diverId);
+    if (requestIndex > -1) {
+      team.pendingRequests.splice(requestIndex, 1);
+    }
+    await team.save();
+    res.status(200).json(team);
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+}
+
+
 
 export {
   getTeams,
@@ -88,5 +135,8 @@ export {
   updateTeam,
   deleteTeam,
   addDiverToTeam,
-  removeDiverFromTeam
+  removeDiverFromTeam,
+  requestToJoinTeam,
+  approveJoinRequest,
+  rejectJoinRequest,
 }

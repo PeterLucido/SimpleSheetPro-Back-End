@@ -8,6 +8,7 @@ const TeamSchema = new Schema({
   divers: [{ type: Schema.Types.ObjectId, ref: 'Profile' }],
   coach: { type: Schema.Types.ObjectId, ref: 'Profile' },
   manager: { type: Schema.Types.ObjectId, ref: 'Profile' },
+  pendingRequests: [{ type: Schema.Types.ObjectId, ref: 'Profile' }],
   school: {
     type: String,
     enum: schoolData,
