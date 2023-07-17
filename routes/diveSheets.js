@@ -9,5 +9,6 @@ router.use(decodeUserFromToken);
 
 router.get('/', checkAuth, diveSheetsCtrl.index);
 router.post('/', checkAuth, diveSheetsCtrl.create);
+router.get('/:id', checkAuth, diveSheetsCtrl.show);
 
 export { router };
