@@ -30,4 +30,18 @@ async function addPhoto(req, res) {
   }
 }
 
-export { index, addPhoto }
+async function getProfile(req, res) {
+  try {
+    const userId = req.user.id; // Assuming the authenticated user ID is available in req.user.id
+    const profile = await Profile.findOne({ userId });
+    if (!profile) {
+      return res.status(404).json({ error: 'Profile not found' });
+    }
+    res.json(profile);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'not working' }); 
+  }
+}
+
+export { index, addPhoto, getProfile };
