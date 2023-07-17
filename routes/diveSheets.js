@@ -8,6 +8,6 @@ const router = Router();
 router.use(decodeUserFromToken);
 
 router.get('/', checkAuth, diveSheetsCtrl.index);
-router.post('/:profileId', checkAuth, diveSheetsCtrl.create);
+router.post('/', checkAuth, diveSheetsCtrl.create);
 
 export { router };
