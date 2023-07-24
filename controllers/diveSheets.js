@@ -43,13 +43,40 @@ async function show(req, res) {
   }
 }
 
+async function update(req, res) {
+  try {
+    console.log('Dive sheet ID:', req.params.id); // Add this log to check the value of diveSheetId
+    const diveSheet = await DiveSheet.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    ).populate(['owner', 'dives', 'title']);
+    res.status(200).json(diveSheet);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+}
 
-
-
+async function deleteDiveSheet(req, res) {
+  try {
+    const diveSheet = await DiveSheet.findByIdAndRemove(req.params.id);
+    const profile = await Profile.findById(req.user.profile)
+    profile.diveSheets.remove({ _id: diveSheet._id })
+    await profile.save()
+    res.status(200).json(diveSheet);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+}
+  
 
 
 export { 
   index, 
   create,
-  show
-};
+  show,
+  update,
+  deleteDiveSheet as delete
+}

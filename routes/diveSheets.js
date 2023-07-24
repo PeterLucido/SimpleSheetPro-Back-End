@@ -7,8 +7,10 @@ const router = Router();
 
 router.use(decodeUserFromToken);
 
-router.get('/', checkAuth, diveSheetsCtrl.index);
-router.post('/', checkAuth, diveSheetsCtrl.create);
-router.get('/:id', checkAuth, diveSheetsCtrl.show);
+router.get('/', checkAuth, diveSheetsCtrl.index)
+router.post('/', checkAuth, diveSheetsCtrl.create)
+router.get('/:id', checkAuth, diveSheetsCtrl.show)
+router.put('/:id', checkAuth, diveSheetsCtrl.update)
+router.delete('/:id', checkAuth, diveSheetsCtrl.delete)
 
-export { router };
+export { router }
